@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
     User.hasMany(models.Movies, {
-      as: "movies"
+      as: "movies",
       foreignKey: "email"
     });
   };
