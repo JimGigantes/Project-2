@@ -35,11 +35,10 @@ $(document).ready(() => {
         })
         .catch(handleSearchErr);
     }
-  
+
     function handleSearchErr(err) {
       $("#alert .msg").text(err.responseJSON);
       $("#alert").fadeIn(500);
     }
-  });
   });
 });
