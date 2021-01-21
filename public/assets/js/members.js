@@ -30,7 +30,7 @@ $(document).ready(() => {
 
     axios.get(URL).then(response => {
       //.get("http://www.omdbapi.com/?t=" + URL + "&apikey=Trilogy")
-
+      
       console.log(response);
     });
     //.catch(handleSearchErr);
