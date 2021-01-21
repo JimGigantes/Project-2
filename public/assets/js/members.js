@@ -1,6 +1,5 @@
 //const { default: axios } = require("axios");
 $(document).ready(() => {
-  const axios = require("axios");
   const lookUpForm = $("form.lookup");
   const movieInput = $("input#movie-input");
   // This file just does a GET request to figure out which user is logged in
