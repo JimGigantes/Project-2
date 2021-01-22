@@ -15,12 +15,15 @@ module.exports = function(app) {
   });
 
   app.get("/api/movies", (req, res) => {
-    db.Movie.findAll().then(function(data) {
-      res.render("members",data);
-    }).catch((err) => {
-      res.status(500).json(err);
-    });
-  })
+    db.Movie.findAll()
+      .then(data => {
+        console.log(data.Movie);
+        res.render("members", { Movie: data });
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
