@@ -31,6 +31,7 @@ module.exports = function(app) {
         throw err;
       }
       cb(result);
+      console.log(result);
       res.render("index", result);
     });
   });
