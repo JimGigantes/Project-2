@@ -29,6 +29,22 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+  app.post("/api/movies", (req, res) => {
+    console.log(req.body);
+    db.Movie.create({
+      title: req.body.title,
+      plot: req.body.plot,
+      watched: req.body.watched,
+      UserId: req.body.id
+    })
+      //db.Movie.create(req.body)
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch(err => {
+        res.status(400).json(err);
+      });
+  });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
@@ -40,7 +56,7 @@ module.exports = function(app) {
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({ db });
+      res.json({});
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea

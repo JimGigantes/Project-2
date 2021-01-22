@@ -2,22 +2,28 @@
 const bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define("User", {
-    // The email cannot be null, and must be a proper email before creation
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
+  const User = sequelize.define(
+    "User",
+    {
+      // The email cannot be null, and must be a proper email before creation
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
+      },
+      // The password cannot be null
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
     },
-    // The password cannot be null
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
+    {
+      freezeTableName: true
     }
-  });
+  );
   User.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
