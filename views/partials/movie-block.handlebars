@@ -1,0 +1,9 @@
+<li>
+	{{burgerName}}
+
+	<button class="change-watched" data-id="{{id}}" data-newwatched="{{watched}}">
+		{{#if watched}}Watch this movie now!{{else}}No movie tonight!{{/if}}
+	</button>
+
+	<button class="delete-watched" data-id="{{this.id}}">DELETE!</button>
+</li>

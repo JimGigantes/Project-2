@@ -16,7 +16,8 @@ $(document).ready(() => {
       type: "POST",
       data: dbData
     }).then(() => {
-      dbData.empty();
+      movieTitle.empty();
+      moviePlot.empty();
       console.log("Data sent to the db");
     });
   }
@@ -34,7 +35,8 @@ $(document).ready(() => {
       type: "POST",
       data: dbData
     }).then(() => {
-      dbData.empty();
+      movieTitle.empty();
+      moviePlot.empty();
       console.log("Data sent to the db");
     });
   }

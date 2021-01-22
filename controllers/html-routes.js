@@ -1,5 +1,18 @@
 // Requiring our custom middleware for checking if a user is logged in
+const express = require("express");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const router = express.Router();
+const movies = require("../models/movies.js");
+
+router.get("/members", (req, res) => {
+  movies.all(data => {
+    const hbsObject = {
+      Movie: data
+    };
+    console.log(hbsObject);
+    res.render("members", hbsObject);
+  });
+});
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
