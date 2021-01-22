@@ -1,5 +1,5 @@
 // Requiring necessary npm packages
-const axios = require("axios").default;
+
 const express = require("express");
 const session = require("express-session");
 
