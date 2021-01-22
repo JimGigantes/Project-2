@@ -25,14 +25,5 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
     res.render("members");
-    const queryString = "SELECT * FROM passport_demo.movie;";
-    db.query(queryString, (err, result) => {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-      console.log(result);
-      res.render("index", result);
-    });
   });
 };
