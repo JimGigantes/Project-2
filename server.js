@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Requiring necessary npm packages
 const axios = require("axios").default;
 const express = require("express");

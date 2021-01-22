@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Requiring our custom middleware for checking if a user is logged in
 const db = require("../models");
 const mysql = require("mysql");
