@@ -13,6 +13,9 @@ const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
+const apiRoutes = require("./controllers/api-routes");
+const htmlRoutes = require("./controllers/html-routes");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -22,14 +25,16 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use("/", apiRoutes);
+app.use("/", htmlRoutes);
 
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
-require("./controllers/html-routes.js")(app);
-require("./controllers/api-routes.js")(app);
+//require("./controllers/html-routes.js")(app);
+//require("./controllers/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync({ force: true }).then(() => {
