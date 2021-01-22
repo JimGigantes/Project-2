@@ -33,9 +33,9 @@ $(document).ready(() => {
 
     axios.get(URL).then(allData => {
       // $.get("http://www.omdbapi.com/?t=" + URL + "&apikey=Trilogy")
-      console.log(allData);
-      console.log(allData.data.Title);
-      console.log(allData.data.Plot);
+      //console.log(allData);
+      //console.log(allData.data.Title);
+      //console.log(allData.data.Plot);
       const movieTitle = allData.data.Title;
       const moviePlot = allData.data.Plot;
       const h2El = `<li><h2 class="plot">${moviePlot}</h2>

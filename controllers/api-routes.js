@@ -15,10 +15,10 @@ module.exports = function(app) {
   });
 
   app.get("/api/movies", (req, res) => {
-    db.Movie.findAll()
+    db.Movie.findAll({})
       .then(data => {
-        console.log(data.Movie);
-        res.json(data);
+        console.log(data);
+        res.json({ Movie: data });
       })
       .catch(err => {
         res.status(500).json(err);

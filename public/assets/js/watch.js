@@ -17,6 +17,8 @@ $(document).ready(() => {
       data: dbData
     }).then(() => {
       dbData.empty();
+      movieTitle.empty();
+      moviePlot.empty();
       console.log("Data sent to the db");
     });
   }
@@ -24,17 +26,21 @@ $(document).ready(() => {
   function moviesHaventWatched() {
     const movieTitle = $(".title");
     const moviePlot = $(".plot");
+    const custId = $("#custId").val();
     //console.log(title);
     const dbData = {
-      title: movieTitle,
-      plot: moviePlot,
-      watched: false
+      title: movieTitle.text(),
+      plot: moviePlot.text(),
+      watched: false,
+      id: custId
     };
     $.ajax("/api/movies", {
       type: "POST",
       data: dbData
     }).then(() => {
       dbData.empty();
+      movieTitle.empty();
+      moviePlot.empty();
       console.log("Data sent to the db");
     });
   }
