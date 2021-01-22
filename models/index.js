@@ -1,5 +1,6 @@
 'use strict';
 var fs        = require('fs');
+const { trim } = require('jquery');
 var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
