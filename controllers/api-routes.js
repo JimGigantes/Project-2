@@ -18,7 +18,7 @@ module.exports = function(app) {
     db.Movie.findAll()
       .then(data => {
         console.log(data.Movie);
-        res.render("members", { Movie: data });
+        res.json(data);
       })
       .catch(err => {
         res.status(500).json(err);
