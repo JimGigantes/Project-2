@@ -3,8 +3,26 @@ const express = require("express");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const router = express.Router();
 const movies = require("../models/movies.js");
+router.get("/", (req, res) => {
+  // If the user already has an account send them to the members page
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.render("signup");
+});
 
-router.get("/members", (req, res) => {
+router.get("/login", (req, res) => {
+  // If the user already has an account send them to the members page
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.render("login");
+});
+
+// Here we've add our isAuthenticated middleware to this route.
+// If a user who is not logged in tries to access this route they will be redirected to the signup page
+router.get("/members", isAuthenticated, (req, res) => {
+  res.render("members");
   movies.all(data => {
     const hbsObject = {
       Movie: data
@@ -14,26 +32,4 @@ router.get("/members", (req, res) => {
   });
 });
 
-module.exports = function(app) {
-  app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.render("signup");
-  });
-
-  app.get("/login", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.render("login");
-  });
-
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, (req, res) => {
-    res.render("members");
-  });
-};
+module.exports = router;
