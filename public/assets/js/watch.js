@@ -2,8 +2,8 @@ $(document).ready(() => {
   $(document).on("click", ".watchBtn", moviesHaveWatched);
   $(document).on("click", ".notWatchBtn", moviesHaventWatched);
   function moviesHaveWatched() {
-    const movieTitle = $(".title");
-    const moviePlot = $(".plot");
+    const movieTitle = $(".card-title");
+    const moviePlot = $(".card-text");
     const custId = $("#custId").val();
     //console.log(title);
     const dbData = {
@@ -12,6 +12,7 @@ $(document).ready(() => {
       watched: true,
       id: custId
     };
+    console.log(dbData);
     $.ajax("/api/moviesAdd", {
       type: "POST",
       data: dbData
@@ -39,8 +40,8 @@ $(document).ready(() => {
   }
 
   function moviesHaventWatched() {
-    const movieTitle = $(".title");
-    const moviePlot = $(".plot");
+    const movieTitle = $(".card-title");
+    const moviePlot = $(".card-text");
     const custId = $("#custId").val();
     //console.log(title);
     const dbData = {
