@@ -36,15 +36,22 @@ $(document).ready(() => {
       //console.log(allData);
       //console.log(allData.data.Title);
       //console.log(allData.data.Plot);
+      console.log("-----------------movie api");
+      console.log(allData);
       const movieTitle = allData.data.Title;
       const moviePlot = allData.data.Plot;
-      const h2El = `<li><h2 class="plot">${moviePlot}</h2>
-      <button class="watchBtn">Watched It</button></li>
-      <button class="notWatchBtn">Not Watched</button></li>`;
+      const moviePoster = allData.data.Poster;
+      const h2El = `<div class="card" style="width: 18rem;">
+  <img src="${moviePoster}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">${movieTitle}</h3>
+    <p class="card-text">${moviePlot}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+  <li <button type="button" class="watchBtn btn btn-success">Watched It</button></li>
+  <li <button type="button" class="notWatchBtn btn btn-danger">Not Watched</button></li>
+</ul>`;
       $("#movieInfo").prepend(h2El);
-      const h1El = `<li><h1 class="title">${movieTitle}</h1>
-      </li>`;
-      $("#movieInfo").prepend(h1El);
     });
     // $.catch(handleSearchErr);
   }
