@@ -30,7 +30,7 @@ module.exports = function(app) {
       });
   });
   app.post("/api/moviesAdd", (req, res) => {
-    //console.log(req.body);
+    console.log(req.body);
     db.Movie.create({
       title: req.body.title,
       plot: req.body.plot,
