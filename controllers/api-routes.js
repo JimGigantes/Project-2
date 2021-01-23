@@ -14,18 +14,6 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/movies", (req, res) => {
-    db.Movie.findAll({})
-      .then(data => {
-        console.log(data.Movie.dataValues);
-        //res.json({ Movie: data });
-        res.redirect(307, "/members");
-      })
-      .catch(err => {
-        res.status(500).json(err);
-      });
-  });
-
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
@@ -51,7 +39,22 @@ module.exports = function(app) {
     })
       //db.Movie.create(req.body)
       .then(() => {
-        res.redirect("/api/movies");
+        //res.redirect("/api/movies");
+        //res.redirect("/members");
+        const query = {
+          UserId: req.body.id
+        };
+
+        db.Movie.findAll({
+          where: query,
+          include: [db.User]
+        })
+          .then(movies => {
+            res.json(movies);
+          })
+          .catch(error => {
+            res.json(error);
+          });
       })
       .catch(err => {
         res.status(400).json(err);

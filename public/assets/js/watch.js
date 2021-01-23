@@ -15,10 +15,25 @@ $(document).ready(() => {
     $.ajax("/api/moviesAdd", {
       type: "POST",
       data: dbData
-    }).then(() => {
+    }).then(movies => {
       //dbData.empty();
       movieTitle.empty();
       moviePlot.empty();
+      $("#watchedUl").empty();
+      $("#notWatchedUl").empty();
+      $("#movieInfo").empty();
+      console.log(movies);
+      for (let i = 0; i < movies.length; i++) {
+        if (movies[i].watched) {
+          $("#watchedUl").append(`<li>${movies[i].title}</li>`);
+          // plot
+          // buttons
+          // etc
+        } else {
+          // movies not watched
+          $("#notWatchedUl").append(`<li>${movies[i].title}</li>`);
+        }
+      }
       //console.log("Data sent to the db");
     });
   }
@@ -37,11 +52,25 @@ $(document).ready(() => {
     $.ajax("/api/moviesAdd", {
       type: "POST",
       data: dbData
-    }).then(() => {
+    }).then(movies => {
       //dbData.empty();
       movieTitle.empty();
       moviePlot.empty();
-      //console.log("Data sent to the db");
+      $("#watchedUl").empty();
+      $("#notWatchedUl").empty();
+      $("#movieInfo").empty();
+      console.log(movies);
+      for (let i = 0; i < movies.length; i++) {
+        if (movies[i].watched) {
+          $("#watchedUl").append(`<li>${movies[i].title}</li>`);
+          // plot
+          // buttons
+          // etc
+        } else {
+          // movies not watched
+          $("#notWatchedUl").append(`<li>${movies[i].title}</li>`);
+        }
+      }
     });
   }
 });
