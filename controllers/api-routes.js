@@ -17,10 +17,9 @@ module.exports = function(app) {
   app.get("/api/movies", (req, res) => {
     db.Movie.findAll({})
       .then(data => {
-        //const x = dataValues data;
-        //console.log(x);
-        //res.json({ Movie: data });
-        res.redirect(307, "/members");
+        console.log("this is inside the app");
+        console.log(data);
+        res.render("members.handlebars", { Movie: data });
       })
       .catch(err => {
         res.status(500).json(err);
