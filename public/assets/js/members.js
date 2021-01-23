@@ -5,7 +5,7 @@ $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(data => {
-    console.log(data);
+    //console.log(data);
     $(".member-name").text(data.email + "User ID" + data.id);
     $("#custId").val(data.id);
   });
@@ -33,9 +33,9 @@ $(document).ready(() => {
 
     axios.get(URL).then(allData => {
       // $.get("http://www.omdbapi.com/?t=" + URL + "&apikey=Trilogy")
-      console.log(allData);
-      console.log(allData.data.Title);
-      console.log(allData.data.Plot);
+      //console.log(allData);
+      //console.log(allData.data.Title);
+      //console.log(allData.data.Plot);
       const movieTitle = allData.data.Title;
       const moviePlot = allData.data.Plot;
       const h2El = `<li><h2 class="plot">${moviePlot}</h2>
