@@ -17,7 +17,8 @@ module.exports = function(app) {
   app.get("/api/movies", (req, res) => {
     db.Movie.findAll({})
       .then(data => {
-        console.log(data.Movie.dataValues);
+        //const x = dataValues data;
+        //console.log(x);
         //res.json({ Movie: data });
         res.redirect(307, "/members");
       })
