@@ -12,14 +12,14 @@ $(document).ready(() => {
       watched: true,
       id: custId
     };
-    $.ajax("/api/movies", {
+    $.ajax("/api/moviesAdd", {
       type: "POST",
       data: dbData
     }).then(() => {
-      dbData.empty();
+      //dbData.empty();
       movieTitle.empty();
       moviePlot.empty();
-      console.log("Data sent to the db");
+      //console.log("Data sent to the db");
     });
   }
 
@@ -34,14 +34,14 @@ $(document).ready(() => {
       watched: false,
       id: custId
     };
-    $.ajax("/api/movies", {
+    $.ajax("/api/moviesAdd", {
       type: "POST",
       data: dbData
     }).then(() => {
-      dbData.empty();
+      //dbData.empty();
       movieTitle.empty();
       moviePlot.empty();
-      console.log("Data sent to the db");
+      //console.log("Data sent to the db");
     });
   }
 });

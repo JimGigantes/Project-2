@@ -17,8 +17,9 @@ module.exports = function(app) {
   app.get("/api/movies", (req, res) => {
     db.Movie.findAll({})
       .then(data => {
-        console.log(data);
-        res.json({ Movie: data });
+        console.log(data.Movie.dataValues);
+        //res.json({ Movie: data });
+        res.redirect(307, "/members");
       })
       .catch(err => {
         res.status(500).json(err);
@@ -40,8 +41,8 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-  app.post("/api/movies", (req, res) => {
-    console.log(req.body);
+  app.post("/api/moviesAdd", (req, res) => {
+    //console.log(req.body);
     db.Movie.create({
       title: req.body.title,
       plot: req.body.plot,
@@ -50,7 +51,7 @@ module.exports = function(app) {
     })
       //db.Movie.create(req.body)
       .then(() => {
-        res.status(204).end();
+        res.redirect("/api/movies");
       })
       .catch(err => {
         res.status(400).json(err);
