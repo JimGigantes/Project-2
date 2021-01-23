@@ -29,7 +29,7 @@ $(document).ready(() => {
   function lookUpMovie(movieData) {
     movieData.movie.replace(/\s+/g, "+");
     const movieName = movieData.movie;
-    const URL = "http://www.omdbapi.com/?t=" + movieName + "&apikey=Trilogy";
+    const URL = "https://www.omdbapi.com/?t=" + movieName + "&apikey=Trilogy";
 
     axios.get(URL).then(allData => {
       // $.get("http://www.omdbapi.com/?t=" + URL + "&apikey=Trilogy")
